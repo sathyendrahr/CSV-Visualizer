@@ -14,4 +14,4 @@ _**CSV Visulalizer**_ is an online tool to upload and view CSV files. The app al
 7. To install all dependency packages, run _**npm install**_
 8. Start the server: _**node server.js**_
 9. Open a web browser and access the application with application url: http://localhost:port/
-10. Demo application can be viewed here: 
+10. Demo application can be viewed here: **_https://csv-visualizer-rqjh.onrender.com_**
