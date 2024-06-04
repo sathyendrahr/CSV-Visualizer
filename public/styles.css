@@ -1,0 +1,13 @@
+#csvViewTable * {
+    font-size: 0.9rem;
+}
+
+.container div {
+    max-height: 70vh;
+}
+
+@media only screen and (max-width: 540px) {
+    .fileUploadContainer {
+        width: 90% !important;
+    }
+}
