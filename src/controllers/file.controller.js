@@ -38,8 +38,13 @@ export default class FileController {
 
   async getFiles(req, res, next) {
     try {
+      let errorMessage = null;
+      if (req.query && req.query.fileError == "true") {
+        errorMessage =
+          "Oops! Seems like the file doesn't exist on server. Please upload again to view. Sorry for the inconvenience caused";
+      }
       const files = await getFiles();
-      res.render("index", { files, errorMessage: null });
+      res.render("index", { files, errorMessage: errorMessage });
     } catch (err) {
       next(err);
     }

@@ -11,3 +11,7 @@ export const addFile = async (file) => {
 export const getFileById = async (id) => {
   return await fileModel.findById(id);
 };
+
+export const deleteFileById = async (id) => {
+  return await fileModel.findByIdAndDelete(id);
+};

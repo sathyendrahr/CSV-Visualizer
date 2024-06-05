@@ -1,5 +1,6 @@
 import csv from "csvtojson";
-import { getFileById } from "../models/file.repository.js";
+import { getFileById, deleteFileById } from "../models/file.repository.js";
+import url from "url";
 
 export default class CSVController {
   /*
@@ -66,6 +67,18 @@ export default class CSVController {
 
       res.render("csv.ejs", { file });
     } catch (err) {
+      console.log(err.message);
+      if (err.message.includes("File does not exist")) {
+        await deleteFileById(req.params.id);
+        return res.redirect(
+          url.format({
+            pathname: "/",
+            query: {
+              fileError: true,
+            },
+          })
+        );
+      }
       next(err);
     }
   }

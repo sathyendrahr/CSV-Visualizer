@@ -1,60 +1,60 @@
 <!-- File Upload section -->
-<form action="/upload" method="post" enctype="multipart/form-data">
-    <div class="m-auto my-3 p-3 w-50 border rounded fileUploadContainer">
-        <% if (errorMessage){ %>
-            <div class="alert alert-danger text-center" role="alert">
-                <%= errorMessage %>
-            </div>
-            <% } %>
+<% if (errorMessage){ %>
+    <div class="alert alert-danger text-center my-3" role="alert">
+        <%= errorMessage %>
+    </div>
+    <% } %>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <div class="m-auto my-3 p-3 w-50 border rounded fileUploadContainer">
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Choose CSV file</label>
                     <!-- Validation added for allowing only CSV files -->
                     <input class="form-control" type="file" accept=".csv" name="fileUpload" id="fileUpload">
                 </div>
                 <button class="btn btn-primary" type="submit">Upload</button>
-    </div>
-</form>
+            </div>
+        </form>
 
-<!-- File Listing - Table View -->
-<div class="container">
-    <div class="table-responsive m-auto my-5">
-        <table class="table table-bordered border border-2 table-hover align-middle">
-            <thead class="border border-2">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">File Name</th>
-                </tr>
-            </thead>
-            <tbody>
+        <!-- File Listing - Table View -->
+        <div class="container">
+            <div class="table-responsive m-auto my-5">
+                <table class="table table-bordered border border-2 table-hover align-middle">
+                    <thead class="border border-2">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">File Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                <% if(!files || files.length==0) {%>
-                    <tr class="text-center">
-                        <td colspan="2">No files available</td>
-                    </tr>
-                    <% } else {%>
-                        <% let count=1 %>
+                        <% if(!files || files.length==0) {%>
+                            <tr class="text-center">
+                                <td colspan="2">No files available</td>
+                            </tr>
+                            <% } else {%>
+                                <% let count=1 %>
 
-                            <% files.forEach(file=>{ %>
-                                <tr>
-                                    <th scope="row">
-                                        <%= count %>
-                                            <% count++ %>
-                                    </th>
-                                    <td>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <span>
-                                                <%= file.name %>
-                                            </span>
-                                            <a class="btn btn-danger" href="/<%= file._id %>/view">View</a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                    <% files.forEach(file=>{ %>
+                                        <tr>
+                                            <th scope="row">
+                                                <%= count %>
+                                                    <% count++ %>
+                                            </th>
+                                            <td>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <span>
+                                                        <%= file.name %>
+                                                    </span>
+                                                    <a class="btn btn-danger" href="/<%= file._id %>/view">View</a>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                <% }) %>
+                                        <% }) %>
 
-                                    <% } %>
-            </tbody>
-        </table>
-    </div>
+                                            <% } %>
+                    </tbody>
+                </table>
+            </div>
 
-</div>
+        </div>
